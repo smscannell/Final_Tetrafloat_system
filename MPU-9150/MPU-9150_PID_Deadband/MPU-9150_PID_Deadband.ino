@@ -10,7 +10,6 @@
 //
 // TODO:
 //   - Add tilt compensation
-//   - Add realtime graphing and data logging
 
 
 //---------------- USER DEFINABLE VARIABLES ----------------------//
@@ -21,10 +20,19 @@
 #define V_sig 5   // Must be pwm pin
 
 //PID parameters
-double Kp = 1, Ki = 0, Kd = 0, Setpoint = 0;
+double Kp = 1, Ki = 0, Kd = 0, Setpoint = 20;
 
 // Triangular wave parameters
-double A = 10, TP = 0.1;
+double A = 2, TP = 1;
+
+// deadband
+double deadband = 2;
+
+// PID limits
+double pidLimit = 10;
+
+// Angle offset
+double offset = -52;
 
 
 
@@ -68,7 +76,7 @@ void setup() {
   pinMode(AntiClockwiseWinch, OUTPUT);
   pinMode(V_sig, OUTPUT);
 
-  myPID.SetOutputLimits(-100, 100); //  Tell the PID what range of outputs to give
+  myPID.SetOutputLimits(-pidLimit, pidLimit); //  Tell the PID what range of outputs to give
   myPID.SetMode(AUTOMATIC); // Turn PID on
 
   //------------------------ IMU Setup ---------------------------------------//
@@ -97,6 +105,8 @@ void loop() {
   if (AccelWkg) {
     readAccel();
     readMag();
+    
+    V_meas = V_meas - offset;
     // smoothing
     smoothedV_meas += (V_meas - smoothedV_meas) / 10;
 
@@ -117,21 +127,21 @@ void loop() {
 
 
     // Relays
-    if (Output > 2) {
-      digitalWrite(ClockwiseWinch, HIGH);
-      digitalWrite(AntiClockwiseWinch, LOW);
+    if (Output > deadband) {
+      digitalWrite(ClockwiseWinch, LOW);
+      digitalWrite(AntiClockwiseWinch, HIGH);
       Anti_status = 0;
       Clock_status = 1;
     }
-    else if (Output < -2) {
-      digitalWrite(ClockwiseWinch, LOW);
-      digitalWrite(AntiClockwiseWinch, HIGH);
+    else if (Output < -deadband) {
+      digitalWrite(ClockwiseWinch, HIGH);
+      digitalWrite(AntiClockwiseWinch, LOW);
       Anti_status = 1;
       Clock_status = 0;
     }
     else  {
-      digitalWrite(ClockwiseWinch, LOW);
-      digitalWrite(AntiClockwiseWinch, LOW);
+      digitalWrite(ClockwiseWinch, HIGH);
+      digitalWrite(AntiClockwiseWinch, HIGH);
       Anti_status = 0;
       Clock_status = 0;
     }
