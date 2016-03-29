@@ -17,14 +17,14 @@ Step 5: Set the user definable variables to desired values
 Step 6: Plug Arduino into USB port and press upload
 
 Step 7: To see values in the serial monitor:
-Open the serial monitor in the Arduino IDE and set baud rate to 38400.
+                Open the serial monitor in the Arduino IDE and set baud rate to 38400.
                 Values are as follows: time (milliseconds), Corrected yaw angle (degrees), PID output, Clockwise winch status, Anticlockwise winch status
         
 Step 8: To see the values on a realtime graph:
                 Open the processing script Graph > Graph.pde.
                 Ensure that the Ardunio is plugged in and has the correct code flashed.
                 Press run (Angle is shown in black, PID output in red), to close graph and save values to csv file press any button.
-                If you get the error 'Error opening serial port' change the number in square brackets.
+                If you get the error 'Error opening serial port': change the number in square brackets.
                 in the line of code (usually between 0 and 3): serial = new Serial(this, Serial.list()[1], 38400);
 
 NOTE: If magnetometer needs calibrating refer to this guide to determine the 3 magnetometer offsets  http://www.instructables.com/id/Simple-Manual-Magnetometer-Calibration/?ALLSTEPS
