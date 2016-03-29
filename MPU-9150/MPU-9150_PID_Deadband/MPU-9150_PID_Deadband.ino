@@ -23,16 +23,16 @@
 double Kp = 1, Ki = 0, Kd = 0, Setpoint = 20;
 
 // Triangular wave parameters
-double A = 2, TP = 1;
+double A = 2, TP = 1; // Amplitude and period (Period seems to result in a period of 2*TP for some reason)
 
 // deadband
-double deadband = 2;
+double deadband = 2; // The range for the deadband on the PID output i.e. 2 = deadband of +/- 2
 
 // PID limits
-double pidLimit = 10;
+double pidLimit = 10; // Limit on the PID output
 
 // Angle offset
-double offset = -52;
+double offset = -52; // Angle offset, can be used to zero the angle reading
 
 
 
