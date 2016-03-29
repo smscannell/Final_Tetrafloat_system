@@ -16,8 +16,8 @@ Step 5: Set the user definable variables to desired values
 
 Step 6: Plug Arduino into USB port and press upload
 
-Step 7: To see values in the serial monitor: 
-                Open the serial monitor in the Arduino IDE and set baud rate to 38400.
+Step 7: To see values in the serial monitor:
+Open the serial monitor in the Arduino IDE and set baud rate to 38400.
                 Values are as follows: time (milliseconds), Corrected yaw angle (degrees), PID output, Clockwise winch status, Anticlockwise winch status
         
 Step 8: To see the values on a realtime graph:
