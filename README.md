@@ -27,6 +27,6 @@ Step 8: To see the values on a realtime graph:
                 If you get the error 'Error opening serial port': change the number in square brackets.
                 in the line of code (usually between 0 and 3): serial = new Serial(this, Serial.list()[1], 38400);
 
-NOTE: If magnetometer needs calibrating refer to this guide to determine the 3 magnetometer offsets  http://www.instructables.com/id/Simple-Manual-Magnetometer-Calibration/?ALLSTEPS
+NOTE: If magnetometer needs calibrating refer to this guide (STEPS 5 AND 7) to determine the 3 magnetometer offsets (You will need to download and run the Calibrate_MPU-9150.ino sketch)  http://www.instructables.com/id/Simple-Manual-Magnetometer-Calibration/?ALLSTEPS
 
 ALSO NOTE: To change the digital outputs change the code between lines 129 and 147
