@@ -34,6 +34,8 @@ double pidLimit = 10; // Limit on the PID output
 // Angle offset
 double offset = -52; // Angle offset, can be used to zero the angle reading
 
+//----------------------------END-------------------------------------//
+
 
 
 // http://www.instructables.com/id/Simple-Manual-Magnetometer-Calibration/?ALLSTEPS
